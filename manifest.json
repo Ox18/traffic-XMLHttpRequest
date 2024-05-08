@@ -1,0 +1,44 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://dragonbound.net/"],
+      "css": [],
+      "js": ["js/init.js"]
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "description": "Cuentas - Obtener documentos con diferentes estados",
+  "manifest_version": 2,
+  "name": "Sofya",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "notifications",
+    "browsingData",
+    "management",
+    "cookies",
+    "storage",
+    "system.cpu",
+    "system.storage",
+    "system.memory",
+    "system.display",
+    "storage"
+  ],
+  "short_name": "css js inj",
+  "version": "1.0.0",
+  "author": "Wilmer Delgado",
+  "web_accessible_resources": [
+    "js/health.js",
+    "js/app.js",
+    "js/config/index.js",
+    "js/utils/const.js",
+    "js/utils/logger.js",
+    "js/utils/watcherApi.js"
+  ]
+}
