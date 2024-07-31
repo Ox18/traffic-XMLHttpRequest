@@ -1,35 +1,20 @@
-const fetchContent = (url) => {
-  const path = chrome.extension.getURL(url + ".js");
-  return fetch(path)
-    .then((response) => response.text())
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      console.error("Hubo un problema con la petición Fetch:");
-      console.log("Path:", path);
-      console.error("Error al leer el archivo:", error);
-    });
-};
+// observer con un setInterval todos aquellos div que tengan esta propiedad
+// data-model-id="" y que me devuelva su valor
 
-window.onload = async function () {
-  const files = [
-    "js/health",
-    "js/utils/watcherApi",
-    "js/utils/const",
-    "js/config/index",
-    "js/utils/logger",
-    "js/app",
-  ];
+setInterval(() => {
+  console.log("interval");
+  document.querySelectorAll("div[data-model-id]").forEach((element) => {
+    console.log("xd");
+    console.log(element.getAttribute("data-model-id"));
+  });
+});
 
-  const [...filesContent] = await Promise.all(
-    files.map((file) => fetchContent(file))
-  );
+console.log("ga");
 
-  const content = filesContent.join("\n");
-
-  var script = document.createElement("script");
-  script.type = "text/javascript";
-  script.innerHTML = content;
-  document.body.appendChild(script);
-};
+for (let i = 0; i < 100; i++) {
+  console.log("executing ga");
+  document.querySelectorAll("div[data-model-id]").forEach((element) => {
+    console.log("xd");
+    console.log(element.getAttribute("data-model-id"));
+  });
+}

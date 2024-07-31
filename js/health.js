@@ -1,1 +1,1 @@
-var traffic = {};
+console.log('traffic')

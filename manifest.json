@@ -1,24 +1,15 @@
 {
-  "update_url": "https://clients2.google.com/service/update2/crx",
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
-  "content_scripts": [
-    {
-      "matches": ["https://dragonbound.net/"],
-      "css": [],
-      "js": ["js/init.js"]
-    }
-  ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-  "description": "Cuentas - Obtener documentos con diferentes estados",
-  "manifest_version": 2,
-  "name": "Sofya",
+  "manifest_version": 3,
+  "name": "BCP - Exams",
+  "description": "This extension will inject the css and js files to the BCP exams",
+  "version": "1.0.0",
+  "author": "X",
   "permissions": [
+    "webRequest",
+    "webRequestBlocking",
     "tabs",
     "activeTab",
+    "scripting",
     "notifications",
     "browsingData",
     "management",
@@ -27,18 +18,29 @@
     "system.cpu",
     "system.storage",
     "system.memory",
-    "system.display",
-    "storage"
+    "system.display"
   ],
-  "short_name": "css js inj",
-  "version": "1.0.0",
-  "author": "Wilmer Delgado",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["https://www.campusbcp.com/*"],
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icons/icon.jpg",
+    "48": "icons/icon.jpg",
+    "128": "icons/icon.jpg"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
   "web_accessible_resources": [
-    "js/health.js",
-    "js/app.js",
-    "js/config/index.js",
-    "js/utils/const.js",
-    "js/utils/logger.js",
-    "js/utils/watcherApi.js"
-  ]
+    {
+      "resources": ["js/health.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "short_name": "css js inj"
 }
